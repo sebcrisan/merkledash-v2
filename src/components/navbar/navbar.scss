@@ -1,0 +1,36 @@
+.navbar{
+    height: 50px;
+    border-bottom: 0.5px solid rgb(231,231,231);
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+    font-weight: bold;
+    
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        width: 100%;
+        .items {
+            display: flex;
+            align-items: center;
+            
+            a {
+                text-decoration: none;
+                color:#555;
+            }
+            .item{
+                display: flex;
+                align-items: center;
+                margin-right: 20px;
+                cursor : pointer;
+                
+                .icon{
+                    font-size: 20px;
+                }
+            }
+        }
+
+    }
+}

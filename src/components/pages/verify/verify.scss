@@ -1,0 +1,23 @@
+.profile {
+    display: flex;
+    .profileContainer {
+        flex: 6;
+
+        .verifyMsg {
+            max-width: 400px;
+            margin: 20px;
+            margin-left: 30px;
+        }
+
+        .profileTitle {
+            margin: 20px;
+            width: 100%;
+            font-size: 24px;
+            color: gray;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+}

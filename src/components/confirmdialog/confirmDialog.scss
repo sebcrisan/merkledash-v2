@@ -1,0 +1,24 @@
+.dialog{
+    .dialogContent {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+    }
+    .dialogActions{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+
+        .confirm {
+            color: black;
+            background-color: lightgray;
+        }
+
+        .decline {
+            color: white;
+            background-color: crimson;
+        }
+    }
+}

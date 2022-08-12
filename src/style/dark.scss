@@ -1,0 +1,238 @@
+@mixin box-shadow() {
+    -webkit-box-shadow: 3px 3px 10px 0px rgba(66,66,66,0.49);
+    -moz-box-shadow: 3px 3px 10px 0px rgba(66,66,66,0.49);
+    box-shadow: 3px 3px 10px 0px rgba(66,66,66,0.49);
+  }
+
+.dark {
+    background-color: #111;
+    color: rgb(156,156,156);
+    .chart {
+        @include box-shadow();
+    }
+    .featured {
+        @include box-shadow();
+    }
+    .dashboard {
+        .dashContainer{
+            .listContainer{
+                @include box-shadow();
+            }
+        }
+    }
+    .single {
+        .singleContainer{
+            .left {
+                @include box-shadow();
+            }
+            .bottom {
+                @include box-shadow();
+            }
+        }
+    }
+    .chartGrid {
+        stroke: rgba(228, 228, 228, 0.219);
+    }
+    .widget {
+        @include box-shadow();
+    }
+    .table {
+        background-color: #111;
+
+        .tableCell {
+            color: gray
+        }
+    }
+
+    .navbar {
+        color: #999;
+        border-color: #333;
+    }
+
+    .sidebar {
+        background-color: #111;
+        border-color: #333;
+
+        .top {
+            .logo {
+                color: #999;
+
+            }
+        }
+
+        hr {
+            border-color: #333;
+        }
+
+        ul {
+            li {
+                &:hover {
+                    background-color: #333;
+                }
+                .icon {
+                    color: #999;
+                }
+            }
+        }
+
+        .colorOption{
+            border: none;
+        }
+    }
+
+    .dataTable, .csvpreview {
+        .dataGrid {
+            color: gray;
+            border: none;
+            .MuiSvgIcon-root {
+                color: #333; 
+            }
+            .MuiDataGrid-footerContainer, .MuiDataGrid-columnHeaders, .MuiDataGrid-cell {
+                border-color: #333;
+            }
+            .MuiTablePagination-displayedRows {
+                color: #555;
+            }
+            .MuiTablePagination-actions {
+                .MuiSvgIcon-root {
+                    color: #555;
+                }
+            }
+            .viewButton, .deleteButton, .cellWithStatus {
+                color: gray;
+                border: 1px solid #333;
+            }
+        }
+    }
+
+    input {
+        background-color: transparent;
+    }
+    .new {
+        .newContainer {
+            .bottom {
+                @include box-shadow();
+                .form {
+                    background-color: #111;
+                    .form-control {
+                        border: none;
+                        border: 1px solid gray;
+                        background-color: transparent;
+                        color: lightgray;
+                        &:focus{
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .profile {
+        .profileContainer {
+            .bottom {
+                @include box-shadow();
+                .form {
+                    background-color: #111;
+                    .form-control{
+                        border: none;
+                        border: 1px solid gray;
+                        background-color: transparent;
+                        color: lightgray;
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                    ::-ms-reveal {
+                        filter: invert(100%);
+                      }
+                }
+            }
+        }
+    }
+
+    .login {
+        .loginContainer {
+            .bottom {
+                @include box-shadow();
+                .form {
+                    background-color: #111;
+                    .form-control{
+                        border: none;
+                        border: 1px solid gray;
+                        background-color: transparent;
+                        color: lightgray;
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                    ::-ms-reveal {
+                        filter: invert(100%);
+                      }
+                }
+            }
+        }
+    }
+
+    .signup {
+        .signupContainer {
+            .bottom {
+                @include box-shadow();
+                .form {
+                    background-color: #111;
+                    .form-control{
+                        border: none;
+                        border: 1px solid gray;
+                        background-color: transparent;
+                        color: lightgray;
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                    ::-ms-reveal {
+                        filter: invert(100%);
+                      }
+                }
+            }
+        }
+    }
+
+    .forgotpw {
+        .forgotpwContainer{
+            .bottom {
+                @include box-shadow();
+                .form {
+                    background-color: #111;
+                    .form-control{
+                        border: none;
+                        border: 1px solid gray;
+                        background-color: transparent;
+                        color: lightgray;
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                    ::-ms-reveal {
+                        filter: invert(100%);
+                      }
+                }
+            }
+        }
+    }
+    .home {
+        .homeContainer {
+            .title {
+                color: #555;
+            }
+            .imgContainer {
+                .examples {
+                    code {
+                        background-color: rgba(211, 211, 211, 0.123);
+                        color: #777;
+                    }
+                }
+            }
+        }
+    }
+    
+}
