@@ -10,7 +10,7 @@ import {useAuth} from '../../../contexts/AuthContext';
 export default function Signup() {
     const {darkMode} = useContext(DarkModeContext)
     const emailRef = useRef();
-    const { resetPassword } = useAuth();
+    const { resetPassword, currentUser } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
@@ -59,10 +59,12 @@ export default function Signup() {
                                     </Button>
                                 </Form>
                                 
-                                {/* Login */}
+                                {/* Login */
+                                !currentUser &&
                                 <div className="w-100 text-center mt-3">
                                     <Link to="/login"  className="loginLink" style={{textDecoration: "none"}}>Login</Link>
                                 </div>
+                                }
                             </Card.Body>
                         </Card>
                     </div>

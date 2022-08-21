@@ -4,7 +4,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Login from "./pages/login/Login";
 import ForgotPassword from "./pages/forgotpw/ForgotPassword";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import PrivateRoute from "./PrivateRoute";
+import { PrivateRoute, ReversePrivateRoute } from "./PrivateRoute";
 import Profile from "./pages/profile/Profile";
 import Home from "./pages/home/Home";
 import Projects from "./pages/projects/Projects";
@@ -31,7 +31,7 @@ function App() {
                 <Route path="/projects/new" element={<PrivateRoute><New/></PrivateRoute>}/>
                 <Route path="/verify" element={<PrivateRoute><Verify/></PrivateRoute>}/>
                 <Route path="/signup" element={<Signup/>} />
-                <Route path="/login" element={<Login/>} />
+                <Route path="/login" element={<ReversePrivateRoute><Login/></ReversePrivateRoute>} />
                 <Route path="/forgot-password" element={<ForgotPassword/>} />
                 <Route path="/getstarted" element={<Getstarted/>} />
               </Routes>

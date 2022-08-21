@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {auth, createUser, loginUser, sendPwResetMail, updateMail, updatePw, db, addToCollection, createCollection, updateDoc, document, getDocument,
-     getDocuments, deleteDocument, verifyEmail, applyAction } from '../firebase' 
+     getDocuments, deleteDocument, verifyEmail, applyAction, reauth } from '../firebase' 
 
 const AuthContext = React.createContext()
 
@@ -79,6 +79,11 @@ export function AuthProvider({children}) {
         return deleteDocument(docRef);
     }
 
+    // reauth with credentials, used for password verification etc
+    function reauthWithCreds(user, credential){
+        return reauth(user, credential);
+    }
+
     // when firebase detects user change, change user in state and then unsubscribe to the listener (make sure component only renders once by using useEffect)
     useEffect(()=>{
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -103,7 +108,8 @@ export function AuthProvider({children}) {
         addDocWithName,
         getDocSnap,
         getAllDocs,
-        deleteDocInCollection
+        deleteDocInCollection,
+        reauthWithCreds
     }
   return (
     <AuthContext.Provider value={value}>
