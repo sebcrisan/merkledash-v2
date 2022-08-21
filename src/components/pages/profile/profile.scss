@@ -10,8 +10,10 @@
             color: gray;
             margin-bottom: 10px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            margin-right: auto;
+            // align-items: center;
+            justify-content: left !important;
+            cursor: pointer;
         }
 
         .top, .bottom {
@@ -35,6 +37,48 @@
             .left {
                 flex: 1;
                 text-align: center;
+                ul {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+        
+                    .title {
+                        font-size: 10px;
+                        font-weight: bold;
+                        color: #999;
+                        margin-top: 15px;
+                        margin-bottom: 5px;
+                    }
+        
+                    li {
+                        display: flex;
+                        align-items: center;
+                        padding: 5px;
+                        cursor: pointer;
+        
+                        &:hover{
+                            background-color: #ece8ff;
+                        }
+                        
+                        .icon {
+                            font-size: 18px;
+                            color: #7451f8;
+                        }
+
+                        .arrow {
+                            font-size: 13px;
+                            color: #7451f8;
+                            margin-left: auto;
+                        }
+        
+                        span {
+                            font-size: 13px;
+                            font-weight: 600;
+                            color: #888;
+                            margin-left: 10px;
+                        }
+                    }
+                }
             }
 
             .right{
@@ -43,7 +87,7 @@
                 align-items: center;
                 justify-content: center;
 
-                form{
+                .form{
                     display: flex;
                     flex-wrap: wrap;
                     gap: 30px;

@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-   sendPasswordResetEmail, updateEmail, updatePassword, sendEmailVerification, applyActionCode } from "firebase/auth";
+   sendPasswordResetEmail, updateEmail, updatePassword, sendEmailVerification, applyActionCode, reauthenticateWithCredential } from "firebase/auth";
 import { getFirestore, collection, doc, addDoc, setDoc, getDoc, getDocs, deleteDoc } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -31,6 +31,7 @@ export const getDocuments = getDocs;
 export const deleteDocument = deleteDoc;
 export const verifyEmail = sendEmailVerification;
 export const applyAction = applyActionCode;
+export const reauth = reauthenticateWithCredential;
 // Database Cloud Firestore
 export const db = getFirestore(app);
 export default app;
