@@ -39,7 +39,10 @@ export function AuthProvider({children}) {
 
     // reset password
     function resetPassword(email) {
-        return sendPwResetMail(auth, email);
+        const actionCodeSettings = {
+            "url": "http://localhost:5173/profile"
+        }
+        return sendPwResetMail(auth, email, actionCodeSettings);
     }
 
     // update email
