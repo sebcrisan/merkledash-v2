@@ -70,7 +70,12 @@ export default function Single() {
     const api = axios.create({
       baseURL: `${baseUrl}`
     })
-    let res = await api.get(`/v1/${projectName}/root`);
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    let res = await api.post(`/v1/${projectName}/root`, JSON.stringify(currentUser), config);
     let root = "";
     if (res.statusText == "OK"){
       root = res.data.root;

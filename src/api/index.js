@@ -21,12 +21,13 @@ var corsOptions = {
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
-app.get('/v1/:projectName/root', cors(corsOptions), (req, res) => {
+app.post('/v1/:projectName/root', cors(corsOptions), (req, res) => {
     const {projectName} = req.params;
-    addresses = getProjectData(projectName);
-    const root = getRoot(addresses);
-    console.log(root);
-    res.status(200).send({
-        "root": root
+    const currentUser = req.body;
+    getProjectData(projectName, currentUser).then((result)=>{
+        const root = getRoot(result);
+        res.status(200).send({
+            "root": root
+        })
     })
 })

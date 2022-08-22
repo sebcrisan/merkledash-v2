@@ -1,7 +1,11 @@
-import {auth} from "./firebaseNode.js";
+import {auth, document, getDocument, db} from "./firebaseNode.js";
 
+const getDocSnap = (collection, docName) => {
+    const docRef = document(db, collection, docName);
+    return getDocument(docRef);
+}
 // Get project data
-export const getProjectData = async (projectName) => {
+export const getProjectData = async (projectName, currentUser) => {
     const docSnap = await getDocSnap(currentUser.uid, projectName);
     let rowData = [];
     // check if data exists
