@@ -64,6 +64,8 @@ export default function Single() {
 
   // Get merkle root using API call
   const getRoot = async () => {
+    setError("");
+    setLoading(true);
     const baseUrl = "http://localhost:8080";
     const api = axios.create({
       baseURL: `${baseUrl}`
@@ -77,6 +79,7 @@ export default function Single() {
     else{
       setError("Something went wrong while trying to fetch data")
     }
+    setLoading(false);
     //TODO: update document with root in db
   }
 
