@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import "./single.scss"
 import Sidebar from "../../sidebar/Sidebar";
 import Navbar from "../../navbar/Navbar";
-import Chart from "../../chart/Chart";
 import CsvPreview from '../../csvpreview/CsvPreview';
 import {Spinner, Button} from 'react-bootstrap';
 import { useAuth} from '../../../contexts/AuthContext';
