@@ -5,6 +5,7 @@ import Navbar from "../../navbar/Navbar";
 import CsvPreview from '../../csvpreview/CsvPreview';
 import {Spinner, Button} from 'react-bootstrap';
 import { useAuth} from '../../../contexts/AuthContext';
+import axios from 'axios';
 
 export default function Single() {
   const [loading, setLoading] = useState(false);
@@ -12,12 +13,13 @@ export default function Single() {
   const [cols, setCols] = useState([]);
   const [root, setRoot] = useState("");
   const {currentUser, getDocSnap} = useAuth();
+  const [projectName, setProjectName] = useState("");
   const [projectId, setProjectId] = useState("");
-
 
   // Get project data
   async function getProjectData(){
     let projectName = window.location.pathname.split("/projects/")[1];
+    setProjectName(projectName);
     setLoading(true);
     const docSnap = await getDocSnap(currentUser.uid, projectName);
     // check if data exists
@@ -57,6 +59,25 @@ export default function Single() {
     getProjectData();
     return () => {};
   }, []);
+
+  // Get merkle root using API call
+  const getRoot = async () => {
+    const baseUrl = "http://localhost:8080";
+    const api = axios.create({
+      baseURL: `${baseUrl}`
+    })
+    let res = await api.get(`/v1/${projectName}/root`);
+    let root = "";
+    if (res.statusText == "OK"){
+      root = res.data.root;
+      setRoot(root);
+    }
+    else{
+      alert("error");
+    }
+    //TODO: update document with root in db
+  }
+
   return (
     <div className='single'>
       <Sidebar/>
@@ -70,7 +91,7 @@ export default function Single() {
                 <div className="detailItem"><span className="itemKey">Title</span></div>
                 <div className="detailItem"><span className="itemValue">{projectId}</span></div>
                 <div className="detailItem"><span className="itemKey">Root</span></div>
-                <div className="detailItem"><span className="itemValue">{root !== "" ? root : <Button variant="primary" disabled={loading} className="btn rootbtn w-100 mt-4">Get Root</Button>}</span></div>
+                <div className="detailItem"><span className="itemValue">{root !== "" ? root : <Button onClick={getRoot} variant="primary" disabled={loading} className="btn rootbtn w-100 mt-4">Get Root</Button>}</span></div>
               </div>
             </div>
           </div>
