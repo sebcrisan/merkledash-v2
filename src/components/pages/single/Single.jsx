@@ -12,6 +12,7 @@ export default function Single() {
   const [rows, setRows] = useState([]);
   const [cols, setCols] = useState([]);
   const [root, setRoot] = useState("");
+  const [proof, setProof] = useState([]);
   const {currentUser, getDocSnap} = useAuth();
   const [projectName, setProjectName] = useState("");
   const [projectId, setProjectId] = useState("");
@@ -62,8 +63,8 @@ export default function Single() {
     return () => {};
   }, []);
 
-  // Get merkle root using API call
-  const getRoot = async () => {
+  // Prepare API call
+  const prepApiCall = () => {
     setError("");
     setLoading(true);
     const baseUrl = "http://localhost:8080";
@@ -75,11 +76,33 @@ export default function Single() {
         'Content-Type': 'application/json'
       }
     }
+    return {api, config}
+  }
+  // Get merkle root using API call
+  const getRoot = async () => {
+    const {api, config} = prepApiCall();
     let res = await api.post(`/v1/${projectName}/root`, JSON.stringify(currentUser), config);
     let root = "";
     if (res.statusText == "OK"){
       root = res.data.root;
       setRoot(root);
+    }
+    else{
+      setError("Something went wrong while trying to fetch data")
+    }
+    setLoading(false);
+    //TODO: update document with root in db
+  }
+
+  // Get merkle proof using API call
+  const getProof = async() => {
+    const {api, config} = prepApiCall();
+    let input = "0xd96bf2f848d14a96a1af5221c67603856e27b493";
+    let res = await api.post(`/v1/${projectName}/proof/${input}`, JSON.stringify(currentUser), config);
+    let proof = "";
+    if (res.statusText == "OK"){
+      proof = res.data.proof;
+      setProof(proof);
     }
     else{
       setError("Something went wrong while trying to fetch data")

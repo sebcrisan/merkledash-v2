@@ -1,4 +1,5 @@
 import {getRoot} from "./getRoot.js";
+import {getProof} from "./getProof.js";
 import {getProjectData} from "./getProjectData.js";
 
 import express from "express";
@@ -28,6 +29,17 @@ app.post('/v1/:projectName/root', cors(corsOptions), (req, res) => {
         const root = getRoot(addresses);
         res.status(200).send({
             "root": root
+        })
+    })
+})
+
+app.post('/v1/:projectName/proof/:address', cors(corsOptions), (req, res) => {
+    const {projectName, address} = req.params;
+    const currentUser = req.body;
+    getProjectData(projectName, currentUser).then((addresses)=>{
+        const proof = getProof(address, addresses);
+        res.status(200).send({
+            "proof": proof
         })
     })
 })
