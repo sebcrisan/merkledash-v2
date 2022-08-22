@@ -3,7 +3,7 @@ import "./single.scss"
 import Sidebar from "../../sidebar/Sidebar";
 import Navbar from "../../navbar/Navbar";
 import CsvPreview from '../../csvpreview/CsvPreview';
-import {Spinner, Button} from 'react-bootstrap';
+import {Spinner, Button, Alert} from 'react-bootstrap';
 import { useAuth} from '../../../contexts/AuthContext';
 import axios from 'axios';
 
@@ -15,11 +15,13 @@ export default function Single() {
   const {currentUser, getDocSnap} = useAuth();
   const [projectName, setProjectName] = useState("");
   const [projectId, setProjectId] = useState("");
+  const [error, setError] = useState("Something went wrong while trying to fetch data");
 
   // Get project data
   async function getProjectData(){
     let projectName = window.location.pathname.split("/projects/")[1];
     setProjectName(projectName);
+    setError("");
     setLoading(true);
     const docSnap = await getDocSnap(currentUser.uid, projectName);
     // check if data exists
@@ -73,7 +75,7 @@ export default function Single() {
       setRoot(root);
     }
     else{
-      alert("error");
+      setError("Something went wrong while trying to fetch data")
     }
     //TODO: update document with root in db
   }
@@ -86,6 +88,7 @@ export default function Single() {
         <div className="top">
           <div className="left">
             <h1 className="title">Information</h1>
+            {error && <Alert className='verifyMsg' variant="danger">{error}</Alert>}
             <div className="item">
               <div className="details">
                 <div className="detailItem"><span className="itemKey">Title</span></div>
