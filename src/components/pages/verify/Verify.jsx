@@ -4,7 +4,6 @@ import Sidebar from '../../sidebar/Sidebar';
 import Navbar from '../../navbar/Navbar';
 import { DarkModeContext } from "../../../contexts/DarkModeContext";
 import {Card, Button, Alert, Spinner, Form} from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
 import {useAuth} from '../../../contexts/AuthContext';
 
 export default function Verify() {

@@ -4,7 +4,7 @@ import Sidebar from "../../sidebar/Sidebar";
 import Navbar from "../../navbar/Navbar";
 import DataTable from '../../dataTable/DataTable';
 import { useAuth } from '../../../contexts/AuthContext';
-import {Card, Button, Alert, Spinner, Form} from 'react-bootstrap';
+import {Spinner} from 'react-bootstrap';
 import VerifyEmail from '../../verifyemail/VerifyEmail';
 
 export default function Projects() {

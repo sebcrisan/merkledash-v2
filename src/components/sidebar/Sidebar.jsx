@@ -2,7 +2,6 @@ import {React, useContext} from 'react'
 import "./sidebar.scss";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import AssessmentIcon from '@mui/icons-material/Assessment';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import { useAuth } from '../../contexts/AuthContext';
