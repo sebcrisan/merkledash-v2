@@ -33,7 +33,7 @@ export default function Single() {
       let headers = [{
         field: "id",
         headerName: "Data",
-        width: 130
+        width: 800
       }]
       setCols(headers);
       // create rows

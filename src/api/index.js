@@ -24,8 +24,8 @@ var corsOptions = {
 app.post('/v1/:projectName/root', cors(corsOptions), (req, res) => {
     const {projectName} = req.params;
     const currentUser = req.body;
-    getProjectData(projectName, currentUser).then((result)=>{
-        const root = getRoot(result);
+    getProjectData(projectName, currentUser).then((addresses)=>{
+        const root = getRoot(addresses);
         res.status(200).send({
             "root": root
         })
