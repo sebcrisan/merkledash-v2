@@ -1,8 +1,10 @@
-const express = require('express');
-const cors = require('cors');
+import {getRoot} from "./getRoot.js";
+import {getProjectData} from "./getProjectData.js";
+
+import express from "express";
+import cors from "cors";
 const app = express();
 const PORT = 8080;
-const getRoot = require('./getRoot');
 
 app.use(cors());
 app.use(express.json());
@@ -21,11 +23,7 @@ var corsOptions = {
 
 app.get('/v1/:projectName/root', cors(corsOptions), (req, res) => {
     const {projectName} = req.params;
-    let addresses = [
-        'a',
-        'b',
-        'c'
-    ]
+    addresses = getProjectData(projectName);
     const root = getRoot(addresses);
     console.log(root);
     res.status(200).send({
