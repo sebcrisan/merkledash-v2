@@ -5,8 +5,8 @@ const getDocSnap = (collection, docName) => {
     return getDocument(docRef);
 }
 // Get project data
-export const getProjectData = async (projectName, currentUser) => {
-    const docSnap = await getDocSnap(currentUser.uid, projectName);
+export const getProjectData = async (projectName, uid) => {
+    const docSnap = await getDocSnap(uid, projectName);
     let rowData = [];
     // check if data exists
     if (docSnap.exists()) {

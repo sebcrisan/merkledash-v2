@@ -81,7 +81,7 @@ export default function Single() {
   // Get merkle root using API call
   const getRoot = async () => {
     const {api, config} = prepApiCall();
-    let res = await api.post(`/v1/${projectName}/root`, JSON.stringify(currentUser), config);
+    let res = await api.get(`/v1/${projectName}/root/${currentUser.uid}`, config);
     let root = "";
     if (res.statusText == "OK"){
       root = res.data.root;
@@ -96,13 +96,15 @@ export default function Single() {
 
   // Get merkle proof using API call
   const getProof = async() => {
+    console.log(proof);
     const {api, config} = prepApiCall();
     let input = "0xd96bf2f848d14a96a1af5221c67603856e27b493";
-    let res = await api.post(`/v1/${projectName}/proof/${input}`, JSON.stringify(currentUser), config);
-    let proof = "";
+    let res = await api.get(`/v1/${projectName}/proof/${input}/${currentUser.uid}`, config);
+    let tempProof = ""
     if (res.statusText == "OK"){
-      proof = res.data.proof;
-      setProof(proof);
+      tempProof = res.data.proof;
+      setProof(tempProof);
+      console.log(tempProof);
     }
     else{
       setError("Something went wrong while trying to fetch data")
@@ -126,12 +128,11 @@ export default function Single() {
                 <div className="detailItem"><span className="itemValue">{projectId}</span></div>
                 <div className="detailItem"><span className="itemKey">Root</span></div>
                 <div className="detailItem"><span className="itemValue">{root !== "" ? root : <Button onClick={getRoot} variant="primary" disabled={loading} className="btn rootbtn w-100 mt-4">Get Root</Button>}</span></div>
+                <div className="detailItem"><span className="itemKey">Proof</span></div>
+                <div className="detailItem"><span className="itemValue">{proof[0] ? proof.map(el => <div>{el}</div>) : <Button onClick={getProof} variant="primary" disabled={loading} className="btn rootbtn w-100 mt-4">Get Proof</Button>}</span></div>
               </div>
             </div>
           </div>
-          {/* <div className="right">
-            <Chart aspect={3 / 1} title="User Spending (Last 6 Months)"/>
-          </div> */}
         </div>
         <div className="bottom">
           <h1 className="title">Project Data</h1>

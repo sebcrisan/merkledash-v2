@@ -22,10 +22,9 @@ var corsOptions = {
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
-app.post('/v1/:projectName/root', cors(corsOptions), (req, res) => {
-    const {projectName} = req.params;
-    const currentUser = req.body;
-    getProjectData(projectName, currentUser).then((addresses)=>{
+app.get('/v1/:projectName/root/:key', cors(corsOptions), (req, res) => {
+    const {projectName, key} = req.params;
+    getProjectData(projectName, key).then((addresses)=>{
         const root = getRoot(addresses);
         res.status(200).send({
             "root": root
@@ -33,10 +32,9 @@ app.post('/v1/:projectName/root', cors(corsOptions), (req, res) => {
     })
 })
 
-app.post('/v1/:projectName/proof/:address', cors(corsOptions), (req, res) => {
-    const {projectName, address} = req.params;
-    const currentUser = req.body;
-    getProjectData(projectName, currentUser).then((addresses)=>{
+app.get('/v1/:projectName/proof/:address/:key', cors(corsOptions), (req, res) => {
+    const {projectName, address, key} = req.params;
+    getProjectData(projectName, key).then((addresses)=>{
         const proof = getProof(address, addresses);
         res.status(200).send({
             "proof": proof
