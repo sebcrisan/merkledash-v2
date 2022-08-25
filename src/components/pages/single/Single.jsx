@@ -14,6 +14,7 @@ export default function Single() {
   const [root, setRoot] = useState("");
   const [proof, setProof] = useState([]);
   const proofRef = useRef();
+  const [inputNotValid, setInputNotValid] = useState(true);
   const {currentUser, getDocSnap} = useAuth();
   const [projectName, setProjectName] = useState("");
   const [projectId, setProjectId] = useState("");
@@ -64,6 +65,16 @@ export default function Single() {
     return () => {};
   }, []);
 
+  // Input validation
+  const validateInput = () => {
+    let inputVal = proofRef.current.value;
+    inputVal == null ||
+    inputVal == undefined ||
+    inputVal == "" ?
+    setInputNotValid(true) :
+    setInputNotValid(false);
+  }
+
   // Prepare API call
   const prepApiCall = () => {
     setError("");
@@ -97,15 +108,12 @@ export default function Single() {
 
   // Get merkle proof using API call
   const getProof = async() => {
-    console.log(proof);
     const {api, config} = prepApiCall();
-    console.log(proofRef)
     let res = await api.get(`/v1/${projectName}/proof/${proofRef.current.value}/${currentUser.uid}`, config);
     let tempProof = ""
     if (res.statusText == "OK"){
       tempProof = res.data.proof;
       setProof(tempProof);
-      console.log(tempProof);
     }
     else{
       setError("Something went wrong while trying to fetch data")
@@ -130,18 +138,19 @@ export default function Single() {
                 <div className="detailItem"><span className="itemKey">Root</span></div>
                 <div className="detailItem"><span className="itemValue">{root !== "" ? root : <Button onClick={getRoot} variant="primary" disabled={loading} className="btn rootbtn w-100 mt-4">Get Root</Button>}</span></div>
                 <div className="detailItem"><span className="itemKey">Proof</span></div>
+                {proof == "" && <div className="detailItem"><span className="itemValue">No proof found</span></div>}
                 <div className="detailItem"><span className="itemValue">{proof[0] && proof.map(el => <div key={el}>{el}</div>)}</span></div>
                 <div className='detailItem'>
                   <span className='itemValue'>
                   <Form>
                     <Form.Group id="proof" className='mb-4'>
                     <Form.Label>Please enter a value you wish to check</Form.Label>
-                    <Form.Control type="text" ref={proofRef}></Form.Control>
+                    <Form.Control type="text" ref={proofRef} onChange={validateInput}></Form.Control>
                     </Form.Group>
                   </Form>
                   </span>
                 </div>
-                <div className="detailItem"><span className="itemValue"><Button onClick={getProof} variant="primary" disabled={loading} className="btn rootbtn w-100 mt-4">Get Proof</Button></span></div>
+                <div className="detailItem"><span className="itemValue"><Button onClick={getProof} variant="primary" disabled={loading || inputNotValid} className="btn rootbtn w-100 mt-4">Get Proof</Button></span></div>
               </div>
             </div>
           </div>
