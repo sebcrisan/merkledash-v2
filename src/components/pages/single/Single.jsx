@@ -129,7 +129,9 @@ export default function Single() {
                 <div className="detailItem"><span className="itemKey">Root</span></div>
                 <div className="detailItem"><span className="itemValue">{root !== "" ? root : <Button onClick={getRoot} variant="primary" disabled={loading} className="btn rootbtn w-100 mt-4">Get Root</Button>}</span></div>
                 <div className="detailItem"><span className="itemKey">Proof</span></div>
-                <div className="detailItem"><span className="itemValue">{proof[0] ? proof.map(el => <div>{el}</div>) : <Button onClick={getProof} variant="primary" disabled={loading} className="btn rootbtn w-100 mt-4">Get Proof</Button>}</span></div>
+                <div className="detailItem"><span className="itemValue">{proof[0] && proof.map(el => <div>{el}</div>)}</span></div>
+                {/*input field*/}
+                <div className="detailItem"><span className="itemValue"><Button onClick={getProof} variant="primary" disabled={loading} className="btn rootbtn w-100 mt-4">Get Proof</Button></span></div>
               </div>
             </div>
           </div>
