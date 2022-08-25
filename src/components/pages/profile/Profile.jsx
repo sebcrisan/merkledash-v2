@@ -13,6 +13,10 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { EmailAuthProvider } from 'firebase/auth';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import KeyIcon from '@mui/icons-material/Key';
+import LockIcon from '@mui/icons-material/Lock';
+
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 export default function Profile() {
     const {darkMode} = useContext(DarkModeContext)
@@ -23,6 +27,7 @@ export default function Profile() {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
     const [verified, setVerified] = useState(false);
+    const [passwordVerified, setPasswordVerified] = useState(false);
 
     // Set this to true when implementing a method that involves viewing sub components
     const [viewingOptions, setViewingOptions] = useState(true);
@@ -32,6 +37,13 @@ export default function Profile() {
     const [viewChangeEmail, setViewChangeEmail] = useState(false);
     // View change password subcomponent
     const [viewChangePassword, setViewChangePassword] = useState(false);
+    // View API key subcomponent
+    const [viewKey, setViewKey] = useState(false);
+    // Api key visibility
+    const [keyVisible, setKeyVisible] = useState(false);
+    const toggleVisibility = () => {
+        setKeyVisible(!keyVisible);
+    }
 
     // Reload user on load
     useEffect(()=>{
@@ -39,11 +51,20 @@ export default function Profile() {
         currentUser.emailVerified ? setVerified(true) : setVerified(false);
         });
     },[])
+
     
-    // Toggle viewing password verification
-    const viewPasswordVerification = () => {
-        setViewingOptions(!viewingOptions);
+    // User wants to view email change - set states to initiate the process
+    const tryViewEmail = () => {
+        setViewingOptions(false);
         setViewEnterPassword(true);
+        setViewChangeEmail(true);
+    } 
+
+    // User wants to view API key - set states to initiate the process
+    const tryViewKey = () => {
+        setViewingOptions(false);
+        setViewEnterPassword(true);
+        setViewKey(true);
     }
     // Password verification
     const verifyPassword = async (passwordInput) => {
@@ -52,7 +73,7 @@ export default function Profile() {
             const cred = EmailAuthProvider.credential(currentUser.email, passwordInput)
             reauthWithCreds(currentUser, cred).then(()=>{
                 setViewEnterPassword(false);
-                setViewChangeEmail(true);
+                setPasswordVerified(true);
                 setError('');
             }).catch((error)=>{
                 setError("Wrong password")
@@ -98,6 +119,7 @@ export default function Profile() {
         setViewEnterPassword(false);
         setViewChangePassword(false);
         setViewChangeEmail(false);
+        setViewKey(false);
         setViewingOptions(true);
     }
 
@@ -123,8 +145,10 @@ export default function Profile() {
                             {/* Profile Options */
                                 viewingOptions &&
                                 <ul>
-                                    <li onClick={viewPasswordVerification}><MailOutlineIcon className='icon'/><span>Change Email</span><ArrowForwardIosIcon className='arrow'/></li>
-                                    <Link to="/forgot-password" className='forgotPw' style={{textDecoration: "none"}}><li onClick={togglePasswordView}><KeyIcon className='icon'/><span>Change Password</span><ArrowForwardIosIcon className='arrow'/></li></Link>
+                                    <li onClick={tryViewEmail}><MailOutlineIcon className='icon'/><span>Change Email</span><ArrowForwardIosIcon className='arrow'/></li>
+                                    <Link to="/forgot-password" className='forgotPw' style={{textDecoration: "none"}}><li onClick={togglePasswordView}><LockIcon className='icon'/><span>Change Password</span><ArrowForwardIosIcon className='arrow'/></li></Link>
+                                    <li onClick={tryViewKey}><KeyIcon className='icon'/><span>API Key</span><ArrowForwardIosIcon className='arrow'/></li>
+
                                 </ul>
                             }
 
@@ -147,7 +171,7 @@ export default function Profile() {
                             }
 
                             {/* Change Email */
-                                viewChangeEmail && 
+                                viewChangeEmail && passwordVerified &&
                                 <>
                                   <Form onSubmit={handleChangeEmail}>
                                     <Form.Group id="email" className='mb-4'>
@@ -157,6 +181,21 @@ export default function Profile() {
                                     <Button disabled={loading} className="btn submitbtn w-100 mt-4" type="submit">
                                             Confirm
                                     </Button>
+                                    </Form>
+                                </>
+                            }
+
+                            {/* View API Key */
+                                viewKey && passwordVerified &&
+                                <>
+                                  <Form>
+                                    <Form.Group id="apiKey" className='mb-4'>
+                                    <Form.Label>Your API Key</Form.Label>
+                                    <input type={keyVisible ? "text" : "password"} className="form-control" defaultValue={currentUser.uid}></input>
+                                    <span>{keyVisible ? <VisibilityOffIcon className='visibilityIcon' onClick={toggleVisibility}></VisibilityOffIcon>
+                                     :
+                                     <VisibilityIcon className='visibilityIcon' onClick={toggleVisibility}></VisibilityIcon>}</span>
+                                    </Form.Group>
                                     </Form>
                                 </>
                             }
