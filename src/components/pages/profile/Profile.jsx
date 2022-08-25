@@ -55,6 +55,7 @@ export default function Profile() {
     
     // User wants to view email change - set states to initiate the process
     const tryViewEmail = () => {
+        setPasswordVerified(false);
         setViewingOptions(false);
         setViewEnterPassword(true);
         setViewChangeEmail(true);
@@ -62,8 +63,10 @@ export default function Profile() {
 
     // User wants to view API key - set states to initiate the process
     const tryViewKey = () => {
+        setPasswordVerified(false);
         setViewingOptions(false);
         setViewEnterPassword(true);
+        setKeyVisible(false);
         setViewKey(true);
     }
     // Password verification
