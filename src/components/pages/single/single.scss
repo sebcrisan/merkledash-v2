@@ -19,6 +19,12 @@
             padding: 20px;
             position: relative;
 
+            .verifyMsg {
+                max-width: 400px;
+                margin: 20px;
+                margin-left: 30px;
+            }
+            
             .item {
                 display: flex;
                 gap: 20px;
@@ -55,6 +61,7 @@
                                 &:focus{
                                     box-shadow: none;
                                 }
+                                width: 100px !important;
                             }
                         }
                     }

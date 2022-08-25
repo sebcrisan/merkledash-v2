@@ -13,11 +13,8 @@ import VerifyEmail from '../../verifyemail/VerifyEmail';
 
 export default function Dashboard() {
   const {darkMode} = useContext(DarkModeContext)
-  const {verifyMail, currentUser} = useAuth();
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("You are currently not verified. Verify your email address to view the dashboard!");
+  const {currentUser} = useAuth();
   const [verified, setVerified] = useState(false);
-  const [error, setError] = useState("");
 
   // Reload user on load
   useEffect(()=>{
