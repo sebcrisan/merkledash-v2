@@ -10,9 +10,8 @@
     top: 0;
     margin-right: auto;
     width: 85vw;
-    // margin-left: 15vw;
-    margin-bottom: 50px;
-    
+    z-index: 999999999999;
+    background-color: white;
     .wrapper {
         display: flex;
         align-items: center;
