@@ -1,10 +1,8 @@
 .home{
     display: flex;
-
     .homeContainer {
         flex: 6;
-        // margin-left: 15vw;
-
+        padding-left: 15vw;
         .title {
             font-size: 48px;
             font-weight: bold;
