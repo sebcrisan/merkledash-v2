@@ -6,9 +6,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    // right: 0;
     width: 15vw;
-    // margin-right: 15vw;
     
     .top {
         height: 50px;
@@ -43,6 +41,10 @@
                 color: #999;
                 margin-top: 15px;
                 margin-bottom: 5px;
+            }
+
+            a {
+                text-decoration: none;
             }
 
             li {
