@@ -14,7 +14,7 @@ import Verify from "./pages/verify/Verify";
 import "../style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "../contexts/DarkModeContext";
-import Getstarted from "./pages/getstarted/Getstarted";
+import GetStarted from "./pages/getstarted/GetStarted";
 
 function App() {
   const {darkMode} = useContext(DarkModeContext)
@@ -33,7 +33,7 @@ function App() {
                 <Route path="/signup" element={<Signup/>} />
                 <Route path="/login" element={<ReversePrivateRoute><Login/></ReversePrivateRoute>} />
                 <Route path="/forgot-password" element={<ForgotPassword/>} />
-                <Route path="/getstarted" element={<Getstarted/>} />
+                <Route path="/getstarted" element={<GetStarted/>} />
               </Routes>
         </AuthProvider>
       </Router>
