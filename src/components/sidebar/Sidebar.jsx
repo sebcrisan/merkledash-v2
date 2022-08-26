@@ -12,7 +12,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useEffect } from 'react';
 
-export default function Sidebar() {
+export default function Sidebar(props) {
   const {dispatch} = useContext(DarkModeContext)
   const {currentUser, logout} = useAuth();
   const navigate = useNavigate();
@@ -38,15 +38,8 @@ export default function Sidebar() {
     setMenuOpen(!menuOpen);
   } 
 
-  // Menu items
-  const menuItems = [
-    "Signing Up"
-    , "Verifying Email"
-    , "Creating a Project"
-    , "Get the merkle root"
-    , "Get the merkle proof"
-    , "API Reference"
-  ]
+  // Menu items: string[]
+  const menuItems = props.menuItems;
 
   return (
     <div className='sidebar'>

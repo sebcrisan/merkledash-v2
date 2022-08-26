@@ -4,9 +4,18 @@ import Sidebar from "../../sidebar/Sidebar";
 import Navbar from "../../navbar/Navbar";
 
 export default function GetStarted() {
+  const menuItems = [
+    "Introduction"
+    ,"Signing Up"
+    , "Verifying Email"
+    , "Creating a Project"
+    , "Get the merkle root"
+    , "Get the merkle proof"
+    , "API Reference"
+  ]
   return (
     <div className='getStarted'>
-      <Sidebar/>
+      <Sidebar menuItems={menuItems}/>
       <div className="getStartedContainer">
         <Navbar/>
         <div className="getStartedTitle">
