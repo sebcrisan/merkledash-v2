@@ -41,7 +41,7 @@
 
             li {
                 display: flex;
-                align-items: center;
+                // align-items: center;
                 padding: 5px;
                 cursor: pointer;
 
@@ -50,15 +50,27 @@
                 }
                 
                 .icon {
+                    display: flex;
+                    align-items: center;
                     font-size: 18px;
                     color: #7451f8;
                 }
 
                 span {
+                    display: flex;
+                    align-items: center;
                     font-size: 13px;
                     font-weight: 600;
                     color: #888;
                     margin-left: 10px;
+                }
+
+                .menuArrow {
+                    display: flex;
+                    align-items: center;
+                    font-size: 18px;
+                    margin-left: auto;
+                    color: #7451f8;
                 }
             }
         }

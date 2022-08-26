@@ -1,3 +1,19 @@
-.getstarted{
-    
+.getStarted {
+    display: flex;
+    .getStartedContainer {
+        flex: 6;
+
+        .getStartedTitle {
+            margin: 20px;
+            width: 100%;
+            font-size: 24px;
+            color: gray;
+            margin-bottom: 10px;
+            display: flex;
+            margin-right: auto;
+            // align-items: center;
+            justify-content: left !important;
+            cursor: pointer;
+        }
+    }
 }

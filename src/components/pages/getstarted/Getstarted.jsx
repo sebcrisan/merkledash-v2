@@ -5,10 +5,13 @@ import Navbar from "../../navbar/Navbar";
 
 export default function GetStarted() {
   return (
-    <div className='projects'>
+    <div className='getStarted'>
       <Sidebar/>
-      <div className="listContainer">
+      <div className="getStartedContainer">
         <Navbar/>
+        <div className="getStartedTitle">
+            Documentation
+        </div>
       </div>
     </div>
   )
