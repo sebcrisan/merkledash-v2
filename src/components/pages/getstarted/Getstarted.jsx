@@ -21,6 +21,9 @@ export default function GetStarted() {
         <div className="getStartedTitle">
             Documentation
         </div>
+        {
+          menuItems.map(el => <div id={el} key={el} className="heading">{el}</div>)
+        }
       </div>
     </div>
   )

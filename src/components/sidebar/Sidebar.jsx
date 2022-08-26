@@ -64,7 +64,7 @@ export default function Sidebar(props) {
           </Link>
           {
             menuOpen &&
-            menuItems.map(el => <li key={el}><span>{el}</span></li>)
+            menuItems.map(el => <a href={`#${el}`}><li key={el}><span>{el}</span></li></a>)
           }
           <p className="title">PROJECTS</p>
           <Link to="/projects" style={{textDecoration: "none"}}><li><ConstructionIcon className='icon'/><span>Projects</span></li></Link>
