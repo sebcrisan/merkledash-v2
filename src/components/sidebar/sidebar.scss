@@ -7,13 +7,14 @@
     top: 0;
     left: 0;
     width: 15vw;
-    
+    min-width: 200px;
+    z-index: 99999999999999;
     .top {
+        z-index: 99999999999999;
         height: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
-
         .logo {
             font-size: 20px;
             font-weight: bold;
