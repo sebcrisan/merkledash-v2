@@ -18,6 +18,27 @@ export default function Sidebar(props) {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+
+  // Intersection Observer for detecting scroll
+  useEffect(()=>{
+    initObserver();
+    return () => {}
+  },[]);
+
+  const initObserver = () => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0
+    }
+    const callback = () => {
+      console.log("Detected");
+    }
+    const observer = new IntersectionObserver(callback, options);
+    const target = document.querySelector('#Introduction');
+    observer.observe(target);
+  }
+
   // Logout user
   async function handleLogout(){
     try{
@@ -64,7 +85,7 @@ export default function Sidebar(props) {
           </Link>
           {
             menuOpen &&
-            menuItems.map(el => <a href={`#${el}`}><li key={el}><span>{el}</span></li></a>)
+            menuItems.map(el => <a key={el} href={`#${el}`}><li><span>{el}</span></li></a>)
           }
           <p className="title">PROJECTS</p>
           <Link to="/projects" style={{textDecoration: "none"}}><li><ConstructionIcon className='icon'/><span>Projects</span></li></Link>
