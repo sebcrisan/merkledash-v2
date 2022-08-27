@@ -1,4 +1,4 @@
-import {React, useContext,useState} from 'react'
+import {React, useContext, useState} from 'react'
 import "./sidebar.scss";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
@@ -19,26 +19,31 @@ export default function Sidebar(props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Intersection Observer for detecting scroll
-  useEffect(()=>{
-    initObserver();
-    return () => {}
-  },[]);
-
-  const initObserver = () => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 1.0
-    }
-    const callback = () => {
-      console.log("Detected");
-    }
-    const observer = new IntersectionObserver(callback, options);
-    const target = document.querySelector('#Introduction');
-    observer.observe(target);
+  // Refs passed from other component 
+  const refs = props.elementsRef;
+  // Visibility state tracking
+  const [currentEntry, setCurrentEntry] = useState("");
+  // Init intersection observer
+  const initObserver = (refs) => {
+    const observer = new IntersectionObserver((entries)=>{
+      let entry = entries[0];
+      if(entry.isIntersecting){
+        let id = entry.target.id;
+        setCurrentEntry(id);
+      }
+    }, {
+      rootMargin: `0px 0px -${window.innerHeight - 75}px 0px`
+    })
+    refs.current.forEach(
+      ref => {
+        observer.observe(ref.current);
+      }
+    );
   }
-
+  useEffect(()=>{
+    refs != undefined && initObserver(refs);    
+  },[]);
+  
   // Logout user
   async function handleLogout(){
     try{
@@ -85,7 +90,7 @@ export default function Sidebar(props) {
           </Link>
           {
             menuOpen &&
-            menuItems.map(el => <a key={el} href={`#${el}`}><li><span>{el}</span></li></a>)
+            menuItems.map((el, index) => <a key={index} href={`#${el}`}><li><span className={el == currentEntry && "currentEntry"}>{el.replace(/-/g, " ")}</span></li></a>)
           }
           <p className="title">PROJECTS</p>
           <Link to="/projects" style={{textDecoration: "none"}}><li><ConstructionIcon className='icon'/><span>Projects</span></li></Link>
