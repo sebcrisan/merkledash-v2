@@ -32,7 +32,7 @@ export default function Sidebar(props) {
         setCurrentEntry(id);
       }
     }, {
-      rootMargin: `0px 0px -${window.innerHeight - 75}px 0px`
+      rootMargin: `0px 0px -${window.innerHeight - 65}px 0px`
     })
     refs.current.forEach(
       ref => {
