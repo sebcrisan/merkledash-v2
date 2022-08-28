@@ -66,7 +66,7 @@ export default function Sidebar(props) {
 
   // Menu items: string[]
   const menuItems = props.menuItems;
-
+  
   return (
     <div className='sidebar'>
       <Link to="/" style={{textDecoration: "none"}}><div className="top"><span className="logo">&lt; Merkle Dash / &gt;</span></div></Link>
@@ -90,7 +90,7 @@ export default function Sidebar(props) {
           </Link>
           {
             menuOpen &&
-            menuItems.map((el, index) => <a key={index} href={`#${el}`}><li><span className={el == currentEntry && "currentEntry"}>{el.replace(/-/g, " ")}</span></li></a>)
+            menuItems.map((el, index) => <a key={index} href={`#${el}`}><li><span className={el == currentEntry ? "currentEntry" : undefined}>{el.replace(/-/g, " ")}</span></li></a>)
           }
           <p className="title">PROJECTS</p>
           <Link to="/projects" style={{textDecoration: "none"}}><li><ConstructionIcon className='icon'/><span>Projects</span></li></Link>

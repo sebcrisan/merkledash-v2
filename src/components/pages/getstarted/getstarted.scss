@@ -12,24 +12,13 @@
             margin-bottom: 10px;
             display: flex;
             justify-content: center;
-            // padding-left: 200px;
-            // padding-right: 200px;
         }
-        .heading{
-            margin: 20px;
-            // margin-bottom: 500px;
+        .postWrap{
             width: 100%;
-            font-size: 24px;
-            color: gray;
-            margin-bottom: 10;
             display: flex;
             flex-direction: column;
             justify-content: center;
             text-align: center;
-            p {
-                font-size: 13px;
-                color: black;
-            }
         }
     }
 }
