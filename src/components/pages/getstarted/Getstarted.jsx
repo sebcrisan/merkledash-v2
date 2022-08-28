@@ -17,11 +17,14 @@ export default function GetStarted() {
         <Navbar/>
         {
           menuItems.map((el, index) => 
-          <div key={index} ref={elementsRef.current[index]} id={el} className="postWrap">
-            <Post headingContent={el.replace(/-/g, " ")}>
-              {hashMap[el]}
-            </Post>
-          </div>
+          <>
+            <div key={index} ref={elementsRef.current[index]} id={el} className="postWrap">
+              <Post headingContent={el.replace(/-/g, " ")}>
+                {hashMap[el]}
+              </Post>
+            </div>
+            <hr></hr>
+          </>
           )
         }
       </div>

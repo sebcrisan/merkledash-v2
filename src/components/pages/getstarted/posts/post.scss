@@ -1,7 +1,21 @@
 .postHeading {
     display: flex;
-    margin: 20px;
+    margin: 10px 0 10px 20px;
     font-size: 24px;
     color: gray;
-    margin-bottom: 10;
+}
+
+.postContent{
+    display: flex;
+
+    .leftCol{
+        padding-left: 20px;
+        display: flex;
+        flex: 1;
+    }
+    .rightCol{
+        padding-left: 20px;
+        display: flex;
+        flex: 1;
+    }
 }
