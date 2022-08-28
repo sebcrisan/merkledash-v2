@@ -95,6 +95,7 @@ export default function Verify() {
     // Get url params on load
     useEffect(() => {
         handleResult();
+        console.log("Hello")
         return () => {};
     }, []);
 

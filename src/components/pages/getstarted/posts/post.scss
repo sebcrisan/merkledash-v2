@@ -12,10 +12,21 @@
         padding-left: 20px;
         display: flex;
         flex: 1;
+
+        .stepsImg {
+            margin: 25px 0 25px 0;
+        }
     }
     .rightCol{
         padding-left: 20px;
         display: flex;
         flex: 1;
+        flex-direction: column;
+
+        .rightImg {
+            aspect-ratio: calc(1 / 1);
+            object-fit: contain;
+            height: 200px;
+        }
     }
 }

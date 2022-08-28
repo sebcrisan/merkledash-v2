@@ -16,7 +16,7 @@ export const SigningUp = () => {
                         Enter your email address, your desired password, and your password once more for confirmation.
                     </li>
                     <li>
-                        Click the <b>SIgn Up</b> button at the bottom of the card. You will be automatically logged in, but you will have to complete some additional steps like verification.
+                        Click the <b>Sign Up</b> button at the bottom of the card. You will be automatically logged in, but you will have to complete some additional steps like verification.
                     </li>
                 </ol>
             </p>

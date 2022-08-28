@@ -29,7 +29,7 @@ function App() {
                 <Route path="/projects" element={<PrivateRoute><Projects/></PrivateRoute>}/>
                 <Route path="/projects/:projectId" element={<PrivateRoute><Single/></PrivateRoute>}/>
                 <Route path="/projects/new" element={<PrivateRoute><New/></PrivateRoute>}/>
-                <Route path="/verify" element={<PrivateRoute><Verify/></PrivateRoute>}/>
+                <Route path="/verify" element={<Verify/>}/>
                 <Route path="/signup" element={<Signup/>} />
                 <Route path="/login" element={<ReversePrivateRoute><Login/></ReversePrivateRoute>} />
                 <Route path="/forgot-password" element={<ForgotPassword/>} />
