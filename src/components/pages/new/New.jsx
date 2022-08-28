@@ -24,7 +24,6 @@ export default function New() {
     // slice from start of text to the first \n index
     // use split to create an array from string by delimiter
     const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
-
     // set the headers state so we can easily use them later
     let headersObj = [];
     for(let i = 0; i < headers.length; i++){
@@ -42,7 +41,6 @@ export default function New() {
     // slice from \n index + 1 to the end of the text
     // use split to create an array of each csv value row
     const rows = str.slice(str.indexOf("\n") + 1).split("\n");
-    
     // Map the rows
     // split values from each row into an array
     // use headers.reduce to create an object
@@ -57,7 +55,6 @@ export default function New() {
       }, {});
       return el;
   });
-
   // return the array
   return arr;
   }
@@ -115,7 +112,6 @@ export default function New() {
               }
               setCols(headers);
               setRows(data);
-              console.log(rows);
               break;
             default:
               break;
@@ -171,6 +167,8 @@ export default function New() {
   function handleFile(e){
     setError("");
     setMessage("");
+    setRows([]);
+    setCols([]);
     let file = e.target.files[0];
     const supportedFormats = ['text/plain', 'text/csv', 'application/json'];
     if(file && file.type){
