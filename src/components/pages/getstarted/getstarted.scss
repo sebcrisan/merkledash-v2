@@ -14,10 +14,12 @@
             justify-content: center;
         }
         .postWrap{
-            width: 100%;
+            width: 75%;
+            padding-left: 15vw;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
         }
     }

@@ -17,8 +17,8 @@ export default function GetStarted() {
         <Navbar/>
         {
           menuItems.map((el, index) => 
-          <div key={index} ref={elementsRef.current[index]} className="postWrap">
-            <Post id={el} headingContent={el.replace(/-/g, " ")}>
+          <div key={index} ref={elementsRef.current[index]} id={el} className="postWrap">
+            <Post headingContent={el.replace(/-/g, " ")}>
               {hashMap[el]}
             </Post>
           </div>
