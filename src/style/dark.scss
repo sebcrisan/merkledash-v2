@@ -4,6 +4,14 @@
     box-shadow: 3px 3px 10px 0px rgba(66,66,66,0.49);
   }
 
+:root{
+    scroll-padding-top: 65px;
+}
+.app {
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
 .dark {
     background-color: #111;
     color: rgb(156,156,156);
@@ -47,6 +55,7 @@
     .navbar {
         color: #999;
         border-color: #333;
+        background-color: #111;
     }
 
     .sidebar {
@@ -70,6 +79,10 @@
                     background-color: #333;
                 }
                 .icon {
+                    color: #999;
+                }
+                .menuArrow {
+                    margin-left: auto;
                     color: #999;
                 }
             }
@@ -229,6 +242,20 @@
                     code {
                         background-color: rgba(211, 211, 211, 0.123);
                         color: #777;
+                    }
+                }
+            }
+        }
+    }
+
+    .getStartedContainer{
+        .postWrap{
+            .postContent{
+                .apiRefContainer{
+                    .rightCol{
+                        .snippetContainer{
+                            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.863);
+                        }
                     }
                 }
             }

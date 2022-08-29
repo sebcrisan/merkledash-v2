@@ -3,13 +3,18 @@
     border-right: 0.5px solid rgb(231, 231, 231);
     min-height: 100vh;
     background-color: white;
-
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15vw;
+    min-width: 200px;
+    z-index: 99999999999999;
     .top {
+        z-index: 99999999999999;
         height: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
-
         .logo {
             font-size: 20px;
             font-weight: bold;
@@ -39,9 +44,13 @@
                 margin-bottom: 5px;
             }
 
+            a {
+                text-decoration: none;
+            }
+
             li {
                 display: flex;
-                align-items: center;
+                // align-items: center;
                 padding: 5px;
                 cursor: pointer;
 
@@ -50,15 +59,31 @@
                 }
                 
                 .icon {
+                    display: flex;
+                    align-items: center;
                     font-size: 18px;
                     color: #7451f8;
                 }
 
                 span {
+                    display: flex;
+                    align-items: center;
                     font-size: 13px;
                     font-weight: 600;
                     color: #888;
                     margin-left: 10px;
+                }
+
+                .currentEntry{
+                    color: #7451f8;
+                }
+
+                .menuArrow {
+                    display: flex;
+                    align-items: center;
+                    font-size: 18px;
+                    margin-left: auto;
+                    color: #7451f8;
                 }
             }
         }

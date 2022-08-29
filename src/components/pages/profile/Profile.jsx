@@ -131,12 +131,12 @@ export default function Profile() {
             <Sidebar className={darkMode ? "dark" : "light"}/>
             <div className="profileContainer">
                 <Navbar></Navbar>
+                {verified ?
+                <>
                 <div className="profileTitle" onClick={back}>
                     {!viewingOptions && <ArrowBackIcon className='backArrow'></ArrowBackIcon>}
                     Update Profile
                 </div>
-                {verified ?
-                <>
                   <div className="bottom">
                     <div className="left">
                         <Card className='form'>

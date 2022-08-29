@@ -1,3 +1,21 @@
-.getstarted{
-    
+.getStarted {
+    display: flex;
+    margin-top: 50px;
+    .getStartedContainer {
+        flex: 6;
+        padding-left: 15vw;
+        .getStartedTitle {
+            margin: 20px;
+            width: 100%;
+            font-size: 24px;
+            color: gray;
+            margin-bottom: 10px;
+            display: flex;
+        }
+        .postWrap{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+    }
 }

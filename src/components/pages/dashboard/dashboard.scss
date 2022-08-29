@@ -1,9 +1,11 @@
 .dashboard {
     display: flex;
+    margin-top: 50px;
 
     .dashContainer{
         flex: 6;
-
+        padding-left: 15vw;
+        
         .widgets, .charts{
             display: flex;
             padding: 20px;
