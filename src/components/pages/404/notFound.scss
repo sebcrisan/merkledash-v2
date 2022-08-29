@@ -1,0 +1,16 @@
+.notFound{
+    .notFoundContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 65px;
+        margin-left: 15vw;
+        .notFoundHeader{
+            font-size: 96px;
+        }
+        .notFoundTxt{
+            font-size: 48px;
+        }
+    }
+}

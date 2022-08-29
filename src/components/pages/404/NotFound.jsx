@@ -8,12 +8,17 @@ export default function NotFound() {
   // Get menu items (keys from hashmap)
   const menuItems = Object.keys(hashMap);
   // Create dynamic refs for each menu item
-  const elementsRef = useRef(menuItems.map(() => createRef()));
   return (
-    <div className='getStarted'>
-      <Sidebar menuItems={menuItems} elementsRef={elementsRef}/>
-      <div className="getStartedContainer">
+    <div className='notFound'>
+      <Sidebar menuItems={menuItems}/>
+      <div className="notFoundContainer">
         <Navbar/>
+        <div className='notFoundHeader'>
+          404
+        </div>
+        <div className='notFoundTxt'>
+          <p>Ain't nobody here but us chickens!</p>
+        </div>
       </div>
     </div>
   )
