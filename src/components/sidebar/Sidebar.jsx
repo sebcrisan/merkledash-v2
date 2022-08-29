@@ -1,4 +1,4 @@
-import {React, useContext, useState} from 'react'
+import {React, useContext, useState, useEffect} from 'react'
 import "./sidebar.scss";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
@@ -10,7 +10,7 @@ import { DarkModeContext } from '../../contexts/DarkModeContext';
 import ArticleIcon from '@mui/icons-material/Article';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { useEffect } from 'react';
+import ConfirmDialog from "../confirmdialog/ConfirmDialog";
 
 export default function Sidebar(props) {
   const {dispatch} = useContext(DarkModeContext)
@@ -18,6 +18,7 @@ export default function Sidebar(props) {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const [confirmDialog, setConfirmDialog] = useState({isOpen: false, title: "", subTitle: "", });
 
   // Refs passed from other component 
   const refs = props.elementsRef;
@@ -98,7 +99,13 @@ export default function Sidebar(props) {
           {currentUser ?
             <>
               <Link to="/profile" style={{textDecoration: "none"}}><li><PersonOutlineOutlinedIcon className='icon'/><span>Profile</span></li></Link>
-              <li onClick={handleLogout}><LogoutIcon className='icon'/><span>Logout</span></li>
+              <li onClick={()=>{
+                setConfirmDialog({
+                   isOpen: true,
+                   title: `Are you sure you want to logout?`,
+                   subTitle: "",
+                   onConfirm: () => {handleLogout()}
+                })}}><LogoutIcon className='icon'/><span>Logout</span></li>
             </>
             :
             <Link to="/login" style={{textDecoration: "none"}}><li><PersonOutlineOutlinedIcon className='icon'/><span>Login</span></li></Link>
@@ -109,6 +116,10 @@ export default function Sidebar(props) {
         <div className="colorOption" onClick={()=>dispatch({type: "LIGHT"})}></div>
         <div className="colorOption" onClick={()=>dispatch({type: "DARK"})}></div>
       </div>
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
     </div>
   )
 }
