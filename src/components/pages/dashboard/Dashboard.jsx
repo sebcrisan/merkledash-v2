@@ -30,19 +30,10 @@ export default function Dashboard() {
       <Navbar></Navbar>
       {verified ?
         <>
-          <div className="widgets">
-          <Widget/>
-          <Widget/>
-          <Widget/>
-          <Widget/>
-          </div>
           <div className="charts">
-            <Featured/>
-            <Chart aspect={2 / 1} title="Total API Calls Each Month"/>
-          </div>
-          <div className="listContainer">
-          <div className="listTitle">Latest Transactions</div>
-          <List/>
+            {/* <Featured/> */}
+            <Chart aspect={2 / 1} title="Some bogus chart that might later provide insight of sorts. If people are actually using this project I might show API calls here.
+            If server gets overloaded then I will have to monetize it and then this will be useful for tracking spending / hitting limits"/>
           </div>
         </>
         : 
