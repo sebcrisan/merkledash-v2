@@ -16,6 +16,14 @@ export const MerkleRootAPIRef = () => {
                     <code>GET</code><pre>/v1/:projectName/root/:key</pre>
                 </div>
             </div>
+            <div className="snippetContainer">
+                <div className="snippetHeader">
+                    RETURNS
+                </div>
+                <div className="snippetBody">
+                    <code>200</code><pre>&#123;"root": string&#125;</pre>
+                </div>
+            </div>
         </div>
     </div>
   )

@@ -16,6 +16,14 @@ export const MerkleProofAPIRef = () => {
                     <code>GET</code><pre>/v1/:projectName/proof/:address/:key</pre>
                 </div>
             </div>
+            <div className="snippetContainer">
+                <div className="snippetHeader">
+                    RETURNS
+                </div>
+                <div className="snippetBody">
+                    <code>200</code><pre>&#123;"proof": string&#91;&#93;&#125;</pre>
+                </div>
+            </div>
         </div>
     </div>
   )
