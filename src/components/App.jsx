@@ -3,7 +3,7 @@ import Signup from "./pages/signup/Signup";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Login from "./pages/login/Login";
 import ForgotPassword from "./pages/forgotpw/ForgotPassword";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { PrivateRoute, ReversePrivateRoute } from "./PrivateRoute";
 import Profile from "./pages/profile/Profile";
 import Home from "./pages/home/Home";
@@ -21,7 +21,7 @@ function App() {
   const {darkMode} = useContext(DarkModeContext)
   return (
     <div className={darkMode ? "app dark" : "app"}>
-      <Router>
+      <Router basename="/">
         <AuthProvider>
               <Routes>
                 <Route path="/" element={<Home/>} />

@@ -21,13 +21,18 @@ export default function Verify() {
     // Handles all the params in the url passed by firebase
     const handleResult = () => {
         // get params
-        const params = new URLSearchParams(window.location.search);
+        let params = window.location.hash.split("?")[1].split('&').reduce(function (res, item) {
+            var parts = item.split('=');
+            res[parts[0]] = parts[1];
+            return res;
+        }, {});
+
         // Get the action to complete.
-        let mode = params.get("mode");
+        let mode = params["mode"];
         // Get the one-time code from the query parameter.
-        let actionCode = params.get("oobCode");
+        let actionCode = params["oobCode"];
         // (Optional) Get the continue URL from the query parameter if available.
-        let continueUrl = params.get("continueUrl");
+        let continueUrl = params["continueUrl"];
         // Handle the given mode i.e. verifyEmail
         setMode(mode);
         handleMode(mode, actionCode, continueUrl);
@@ -95,7 +100,6 @@ export default function Verify() {
     // Get url params on load
     useEffect(() => {
         handleResult();
-        console.log("Hello")
         return () => {};
     }, []);
 

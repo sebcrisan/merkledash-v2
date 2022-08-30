@@ -11,6 +11,7 @@ import ArticleIcon from '@mui/icons-material/Article';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ConfirmDialog from "../confirmdialog/ConfirmDialog";
+import { HashLink } from 'react-router-hash-link';
 
 export default function Sidebar(props) {
   const {dispatch} = useContext(DarkModeContext)
@@ -91,7 +92,7 @@ export default function Sidebar(props) {
           </Link>
           {
             menuOpen &&
-            menuItems.map((el, index) => <a key={index} href={`#${el}`}><li><span className={el == currentEntry ? "currentEntry" : undefined}>{el.replace(/-/g, " ")}</span></li></a>)
+            menuItems.map((el, index) => <HashLink key={index} to={`#${el}`}><li><span className={el == currentEntry ? "currentEntry" : undefined}>{el.replace(/-/g, " ")}</span></li></HashLink>)
           }
           <p className="title">PROJECTS</p>
           <Link to="/projects" style={{textDecoration: "none"}}><li><ConstructionIcon className='icon'/><span>Projects</span></li></Link>
