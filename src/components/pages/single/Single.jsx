@@ -79,7 +79,7 @@ export default function Single() {
   const prepApiCall = () => {
     setError("");
     setLoading(true);
-    const baseUrl = "https://randomcreature.herokuapp.com/";
+    const baseUrl = "https://merkleapi.herokuapp.com/";
     const api = axios.create({
       baseURL: `${baseUrl}`
     })
