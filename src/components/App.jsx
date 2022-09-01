@@ -1,6 +1,6 @@
 import { AuthProvider } from "../contexts/AuthContext";
 import Signup from "./pages/signup/Signup";
-import Dashboard from "./pages/dashboard/Dashboard";
+// import Dashboard from "./pages/dashboard/Dashboard";
 import Login from "./pages/login/Login";
 import ForgotPassword from "./pages/forgotpw/ForgotPassword";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
@@ -25,7 +25,7 @@ function App() {
         <AuthProvider>
               <Routes>
                 <Route path="/" element={<Home/>} />
-                <Route exact path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
+                {/* <Route exact path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>}/> */}
                 <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
                 <Route path="/projects" element={<PrivateRoute><Projects/></PrivateRoute>}/>
                 <Route path="/projects/:projectId" element={<PrivateRoute><Single/></PrivateRoute>}/>

@@ -30,7 +30,7 @@ export default function Login() {
             setLoading(true);
             // create the user account
             const userCred = await signup(emailRef.current.value, passwordRef.current.value);
-            navigate("/dashboard");
+            navigate("/projects");
         } catch(e) {
             console.log(e);
             let err = e.message.split("Firebase: ")[1].split("(");
