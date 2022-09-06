@@ -13,7 +13,7 @@ export const MerkleRootAPIRef = () => {
                     ENDPOINTS
                 </div>
                 <div className="snippetBody">
-                    <code>GET</code><pre>https://merkleapi.herokuapp.com/v1/:projectName/root/:key</pre>
+                    <code>GET</code><pre>https://merkle-api.onrender.com/v1/:projectName/root/:key</pre>
                 </div>
             </div>
             <div className="snippetContainer">
