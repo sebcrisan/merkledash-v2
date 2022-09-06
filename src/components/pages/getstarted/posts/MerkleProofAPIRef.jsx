@@ -1,4 +1,5 @@
 import React from 'react'
+import "./merkleProofAPIRef.scss";
 
 export const MerkleProofAPIRef = () => {
   return (

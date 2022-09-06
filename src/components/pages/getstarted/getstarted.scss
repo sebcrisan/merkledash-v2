@@ -19,3 +19,13 @@
         }
     }
 }
+
+@media screen and (max-width: 768px){
+    .getStarted{
+        width: 100vw;
+        max-width: 100%;
+        .getStartedContainer{
+            padding-left: 0 !important;
+        }
+    }
+}

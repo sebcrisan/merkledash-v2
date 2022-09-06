@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef, createRef} from 'react'
+import React, {useRef, createRef} from 'react'
 import "./getStarted.scss"
 import Sidebar from "../../sidebar/Sidebar";
 import Navbar from "../../navbar/Navbar";
