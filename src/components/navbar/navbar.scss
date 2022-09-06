@@ -45,8 +45,15 @@
         width: 100vw;
         max-width: 100%;
         .wrapper{
+            justify-content: space-between;
             .items{
                 margin-right: 0;
+                width: 100vw;
+                max-width: 100%;
+                .item.left{
+                    margin-right: auto;
+                    margin-left: 20px;
+                }
             }
         }
     }
