@@ -39,3 +39,15 @@
 
     }
 }
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        width: 100vw;
+        max-width: 100%;
+        .wrapper{
+            .items{
+                margin-right: 0;
+            }
+        }
+    }
+}

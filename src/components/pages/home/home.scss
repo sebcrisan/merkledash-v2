@@ -44,3 +44,11 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .home{
+        .homeContainer {
+            padding-left: 0;
+        }
+    }
+}
