@@ -8,7 +8,7 @@ import { useAuth } from '../../contexts/AuthContext';
 
 const columns = [
   { field: 'id', headerName: 'Project name', width: 130 },
-  { field: 'root', headerName: 'Root', width: 130 },
+  // { field: 'root', headerName: 'Root', width: 130 },
 ];
 
 
