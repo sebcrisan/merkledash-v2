@@ -96,12 +96,12 @@ export default function Single() {
     try {
       let res = await api.get(`/v1/${projectName}/root/${currentUser.uid}`, config);
       let root = "";
-      if (res.statusText == "OK"){
+      if (res.status == 200){
         root = res.data.root;
         setRoot(root);
       }
       else{
-        setError("Something went wrong while trying to fetch data")
+        setError(`Something went wrong while trying to fetch data. Status: ${res.status}`)
       }
       setLoading(false);
     }
@@ -119,12 +119,12 @@ export default function Single() {
       const {api, config} = prepApiCall();
       let res = await api.get(`/v1/${projectName}/proof/${proofRef.current.value}/${currentUser.uid}`, config);
       let tempProof = ""
-      if (res.statusText == "OK"){
+      if (res.status == 200){
         tempProof = res.data.proof;
         setProof(tempProof);
       }
       else{
-        setError("Something went wrong while trying to fetch data")
+        setError(`Something went wrong while trying to fetch data. Status: ${res.status}`)
       }
       setLoading(false);
     }
