@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, useState} from 'react'
 import "./home.scss";
 import Sidebar from '../../sidebar/Sidebar';
 import Navbar from '../../navbar/Navbar';
@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 
 export default function Home() {
   const {darkMode} = useContext(DarkModeContext)
+   
   return (
     <div className='home'>
       <Sidebar className={darkMode ? "dark" : "light"}/>
