@@ -15,6 +15,7 @@ export default function Navbar() {
     try{
       await logout();
       navigate("/");
+      setConfirmDialog({isOpen:false, title: "", subtitle: ""});
     } catch{
      alert("Failed to log out");
     }
