@@ -14,3 +14,16 @@
         }
     }
 }
+
+@media screen and (max-width: 768px){
+    .notFound{
+        width: 100vw;
+        max-width: 100%;
+        .notFoundContainer{
+            margin-left: 0;
+            .notFoundTxt{
+                text-align: center;
+            }
+        }
+    }
+}
