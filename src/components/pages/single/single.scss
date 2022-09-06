@@ -90,3 +90,35 @@
         }
     }
 }
+
+
+@media screen and (max-width: 768px) {
+    .single{
+        .singleContainer {
+            padding-left: 0;
+            width: 100vw;
+            max-width: 100%;
+            margin-bottom: 20px;
+            .left{
+                width: 100vw;
+                max-width: 100%;
+                .item{
+                    .details{
+                        width: 100vw;
+                        max-width: 100%;
+                        .detailItem{
+                            .itemValue{
+                                width: 100vw;
+                                max-width: 100%;
+                                word-break: break-all;
+                                div {
+                                    margin-bottom: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
