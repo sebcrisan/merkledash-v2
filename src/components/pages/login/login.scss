@@ -93,3 +93,14 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .login{
+        .loginContainer {
+            padding-left: 0;
+            width: 100vw;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+}
