@@ -1,6 +1,6 @@
 import {React, useContext, useState, useEffect} from 'react'
 import "./sidebar.scss";
-import DashboardIcon from '@mui/icons-material/Dashboard';
+// import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ConstructionIcon from '@mui/icons-material/Construction';
@@ -11,6 +11,7 @@ import ArticleIcon from '@mui/icons-material/Article';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ConfirmDialog from "../confirmdialog/ConfirmDialog";
+import { HashLink } from 'react-router-hash-link';
 
 export default function Sidebar(props) {
   const {dispatch} = useContext(DarkModeContext)
@@ -74,8 +75,8 @@ export default function Sidebar(props) {
       <hr />
           <div className="center">
         <ul>
-          <p className="title">MAIN</p>
-          <Link to="/dashboard" style={{textDecoration: "none"}}><li><DashboardIcon className='icon'/><span>Dashboard</span></li></Link>
+          <p className="title">DOCS</p>
+          {/* <Link to="/dashboard" style={{textDecoration: "none"}}><li><DashboardIcon className='icon'/><span>Dashboard</span></li></Link> */}
           <Link onClick={toggleMenu} to="/getstarted" style={{textDecoration: "none"}}>
             <li>
               <ArticleIcon className='icon'/>
@@ -91,7 +92,7 @@ export default function Sidebar(props) {
           </Link>
           {
             menuOpen &&
-            menuItems.map((el, index) => <a key={index} href={`#${el}`}><li><span className={el == currentEntry ? "currentEntry" : undefined}>{el.replace(/-/g, " ")}</span></li></a>)
+            menuItems.map((el, index) => <HashLink key={index} to={`#${el}`}><li><span className={el == currentEntry ? "currentEntry" : undefined}>{el.replace(/-/g, " ")}</span></li></HashLink>)
           }
           <p className="title">PROJECTS</p>
           <Link to="/projects" style={{textDecoration: "none"}}><li><ConstructionIcon className='icon'/><span>Projects</span></li></Link>

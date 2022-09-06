@@ -158,7 +158,7 @@ export default function New() {
       setLoading(false);
       setViewProject(true);
     } catch(e){
-      setError(e.message);
+      setError(`${e.message} Please relog and try again.`);
       setLoading(false);
     }
   }

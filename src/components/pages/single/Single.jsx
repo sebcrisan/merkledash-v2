@@ -22,7 +22,7 @@ export default function Single() {
 
   // Get project data
   async function getProjectData(){
-    let projectName = window.location.pathname.split("/projects/")[1];
+    let projectName = window.location.hash.split("/projects/")[1];
     setProjectName(projectName);
     setError("");
     setLoading(true);
@@ -79,7 +79,7 @@ export default function Single() {
   const prepApiCall = () => {
     setError("");
     setLoading(true);
-    const baseUrl = "http://localhost:8080";
+    const baseUrl = "https://merkleapi.herokuapp.com/";
     const api = axios.create({
       baseURL: `${baseUrl}`
     })
@@ -93,32 +93,46 @@ export default function Single() {
   // Get merkle root using API call
   const getRoot = async () => {
     const {api, config} = prepApiCall();
-    let res = await api.get(`/v1/${projectName}/root/${currentUser.uid}`, config);
-    let root = "";
-    if (res.statusText == "OK"){
-      root = res.data.root;
-      setRoot(root);
+    try {
+      let res = await api.get(`/v1/${projectName}/root/${currentUser.uid}`, config);
+      let root = "";
+      if (res.statusText == "OK"){
+        root = res.data.root;
+        setRoot(root);
+      }
+      else{
+        setError("Something went wrong while trying to fetch data")
+      }
+      setLoading(false);
     }
-    else{
-      setError("Something went wrong while trying to fetch data")
+    catch(error){
+      setError(error.message);
+      setLoading(false);
     }
-    setLoading(false);
+    
     //TODO: update document with root in db
   }
 
   // Get merkle proof using API call
   const getProof = async() => {
-    const {api, config} = prepApiCall();
-    let res = await api.get(`/v1/${projectName}/proof/${proofRef.current.value}/${currentUser.uid}`, config);
-    let tempProof = ""
-    if (res.statusText == "OK"){
-      tempProof = res.data.proof;
-      setProof(tempProof);
+    try{
+      const {api, config} = prepApiCall();
+      let res = await api.get(`/v1/${projectName}/proof/${proofRef.current.value}/${currentUser.uid}`, config);
+      let tempProof = ""
+      if (res.statusText == "OK"){
+        tempProof = res.data.proof;
+        setProof(tempProof);
+      }
+      else{
+        setError("Something went wrong while trying to fetch data")
+      }
+      setLoading(false);
     }
-    else{
-      setError("Something went wrong while trying to fetch data")
+    catch(error){
+      setLoading(false);
+      setError(error.message);
     }
-    setLoading(false);
+    
     //TODO: update document with root in db
   }
 

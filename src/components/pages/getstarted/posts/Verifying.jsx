@@ -16,7 +16,7 @@ export const Verifying = () => {
                     Check your email and click the verification link. 
                 </li>
                 <li>
-                    Click the verification link. <b>Always verify that the domain of the link is equal to ours!</b> You should now be verified and you should be able to make use of the full functionality.
+                    Click the verification link. <b>Always verify that the domain of the link is equal to ours!</b> You should now be verified and you should be able to make use of the full functionality. If you are experiencing any issues, please try <b>relogging</b>.
                 </li>
             </ol>
         </div>

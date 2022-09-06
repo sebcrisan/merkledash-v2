@@ -14,3 +14,14 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .projects{
+        .listContainer {
+            padding-left: 0;
+            width: 100vw;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+}

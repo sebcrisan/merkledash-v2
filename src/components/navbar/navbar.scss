@@ -1,3 +1,5 @@
+
+       
 .navbar{
     height: 50px;
     border-bottom: 0.5px solid rgb(231,231,231);
@@ -37,5 +39,44 @@
             }
         }
 
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .MuiList-root > a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .colorOption {
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        border: 1px solid #7451f8;
+        cursor: pointer;
+        margin: 5px;
+
+        &:nth-child(1){
+            background-color: whitesmoke;
+        }
+        &:nth-child(2){
+            background-color: #333;
+        }
+    }
+    .navbar {
+        width: 100vw;
+        max-width: 100%;
+        .wrapper{
+            justify-content: space-between;
+            .items{
+                margin-right: 0;
+                width: 100vw;
+                max-width: 100%;
+                padding-left: 10px;
+                .item.left{
+                    margin-right: auto;
+                    margin-left: 20px;
+                }
+            }
+        }
     }
 }

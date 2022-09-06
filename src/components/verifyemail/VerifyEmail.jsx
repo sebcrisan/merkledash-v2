@@ -7,7 +7,7 @@ export default function VerifyEmail(props) {
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
-    const {currentUser, verifyMail} = useAuth();
+    const {currentUser, verifyMail, logout} = useAuth();
     // Set verified on initial render
     useEffect(() => {
         switch (props.version) {
@@ -33,7 +33,7 @@ export default function VerifyEmail(props) {
         }, 1000);
     }
 
-    // Ends the verification loop, sets verified to true
+    // Ends the verification loop, logs user out
     const endVerificationLoop = (looper) => {
         clearInterval(looper);
         //refresh page

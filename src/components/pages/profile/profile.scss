@@ -139,3 +139,15 @@
         }
     }
 }
+
+
+@media screen and (max-width: 768px) {
+    .profile{
+        .profileContainer {
+            padding-left: 0 !important;
+            width: 100vw;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+}
