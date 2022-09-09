@@ -102,7 +102,7 @@ export default function Navbar(props) {
               <Link to={menuItemsLoggedOutObj[text]["link"]}>
                 <ListItem key={text} disablePadding>
                   <ListItemButton>
-                    <ListItemIcon sx={{color: "red"}}>
+                    <ListItemIcon>
                       {menuItemsLoggedOutObj[text]["component"]}
                     </ListItemIcon>
                     <ListItemText primary={text} />
@@ -110,6 +110,10 @@ export default function Navbar(props) {
                 </ListItem>
               </Link>
             ))}
+            <ListItem>
+              <div className="colorOption" onClick={()=>dispatch({type: "LIGHT"})}></div>
+              <div className="colorOption" onClick={()=>dispatch({type: "DARK"})}></div>
+            </ListItem>
           </List>
           </>
         }
