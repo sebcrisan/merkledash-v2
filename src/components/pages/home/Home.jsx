@@ -24,8 +24,8 @@ export default function Home() {
         <div className="imgContainer">
           <img className="tree" src={darkMode ? treeDark : treeLight } alt="merkle tree" />
           <div className="examples">
-            <code>GET "merkledash.com/v1/myProject/proof/myString" -&gt; &#123;proof: [myProof, myProof]&#125;</code>
-            <code>GET "merkledash.com/v1/myProject/root" -&gt; &#123;root: 0xabc123...&#125;</code>
+            <code>GET "v1/:projectName/proof/:address/:key" -&gt; &#123;proof: [myProof, myProof]&#125;</code>
+            <code>GET "v1/:projectName/root/:key" -&gt; &#123;root: 0xabc123...&#125;</code>
           </div>
           <Link to="/getstarted"><Button variant="contained">Get Started</Button></Link>
         </div>
