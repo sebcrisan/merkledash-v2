@@ -18,29 +18,64 @@ import GetStarted from "./pages/getstarted/GetStarted";
 import NotFound from "./pages/404/NotFound";
 
 function App() {
-  const {darkMode} = useContext(DarkModeContext)
+  const { darkMode } = useContext(DarkModeContext);
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <Router basename="/">
         <AuthProvider>
-              <Routes>
-                <Route path="/" element={<Home/>} />
-                {/* <Route exact path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>}/> */}
-                <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
-                <Route path="/projects" element={<PrivateRoute><Projects/></PrivateRoute>}/>
-                <Route path="/projects/:projectId" element={<PrivateRoute><Single/></PrivateRoute>}/>
-                <Route path="/projects/new" element={<PrivateRoute><New/></PrivateRoute>}/>
-                <Route path="/verify" element={<Verify/>}/>
-                <Route path="/signup" element={<Signup/>} />
-                <Route path="/login" element={<ReversePrivateRoute><Login/></ReversePrivateRoute>} />
-                <Route path="/forgot-password" element={<ForgotPassword/>} />
-                <Route path="/getstarted" element={<GetStarted/>} />
-                <Route path="*" element={<NotFound></NotFound>}></Route>
-              </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            {/* <Route exact path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>}/> */}
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/projects"
+              element={
+                <PrivateRoute>
+                  <Projects />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/projects/:projectId"
+              element={
+                <PrivateRoute>
+                  <Single />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/projects/new"
+              element={
+                <PrivateRoute>
+                  <New />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/verify" element={<Verify />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route
+              path="/login"
+              element={
+                <ReversePrivateRoute>
+                  <Login />
+                </ReversePrivateRoute>
+              }
+            />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/getstarted" element={<GetStarted />} />
+            <Route path="*" element={<NotFound></NotFound>}></Route>
+          </Routes>
         </AuthProvider>
       </Router>
     </div>
-  )
+  );
 }
 
 export default App;
